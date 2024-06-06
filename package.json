@@ -1,0 +1,60 @@
+{
+  "name": "nextjs-authjs-mongodb-mui-template",
+  "author": "Marco Araujo (https://srmarquinho.github.io/CV/)",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run setup && next build",
+    "start": "next start",
+    "lint": "next lint",
+    "setup": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/setup.mjs",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^2.1.0",
+    "@emotion/cache": "^11.11.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/server": "^11.11.0",
+    "@emotion/styled": "^11.11.5",
+    "@hookform/resolvers": "^3.4.2",
+    "@mui/icons-material": "^5.15.18",
+    "@mui/material": "^5.15.18",
+    "@mui/material-nextjs": "^5.15.11",
+    "@prisma/client": "^5.15.0",
+    "@vercel/speed-insights": "^1.0.10",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.6.2",
+    "next": "^14.2.3",
+    "next-auth": "^5.0.0-beta.18",
+    "nodemailer": "^6.9.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.51.5",
+    "swr": "^2.2.5",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "20.12.2",
+    "@types/nodemailer": "^6.4.15",
+    "@types/react": "18.3.1",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-next": "^14.2.3",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "husky": "^9.0.11",
+    "prisma": "^5.15.0",
+    "typescript": "^5.4.5"
+  },
+  "prisma": {
+    "schema": "./src/prisma/schema.prisma"
+  }
+}

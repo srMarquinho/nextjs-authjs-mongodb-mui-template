@@ -1,0 +1,49 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["airbnb", "airbnb-typescript", "airbnb/hooks", "next/core-web-vitals"],
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      },
+      "rules": {
+        "import/prefer-default-export": "off",
+        "max-len": ["warn", { "code": 160 }],
+        "import/extensions": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+        "indent": ["warn", 2],
+        "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+        "react/require-default-props": "off",
+        "@typescript-eslint/no-throw-literal": "off",
+        "@typescript-eslint/indent": "off",
+        "no-underscore-dangle": "off",
+        "operator-linebreak": "off",
+        "@typescript-eslint/no-explicit-any": "error",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "react/jsx-key": "error",
+        "@typescript-eslint/no-unused-vars": "warn"
+      }
+    },
+    {
+      "files": ["*.mjs"],
+      "extends": ["airbnb/base", "next/core-web-vitals"],
+      "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+      },
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "import/prefer-default-export": "off",
+        "max-len": ["warn", { "code": 160 }],
+        "import/extensions": "off",
+        "indent": ["warn", 2],
+        "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+        "react/require-default-props": "off",
+        "no-underscore-dangle": "off",
+        "operator-linebreak": "off"
+      }
+    }
+  ]
+}

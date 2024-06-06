@@ -1,0 +1,64 @@
+volumes:
+  mongo1_data:
+  mongo1_config:
+
+services:
+  mongo1:
+    image: mongo:7.0
+    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
+    ports:
+      - 27017:27017
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: echo 'db.adminCommand("ping")' | mongosh --port 27017 --quiet
+      interval: 10s
+      timeout: 30s
+      retries: 5
+    volumes:
+      - "mongo1_data:/data/db"
+      - "mongo1_config:/data/configdb"
+
+  mongo-init-replica:
+    image: mongo:7.0
+    entrypoint: ["sh", "-c"]
+    command: >
+      "
+      echo 'rs.initiate({_id: \"rs0\", members: [{_id: 0, host: \"mongo1:27017\"}]})';
+      echo 'db.grantRolesToUser("main", [{role: "readWrite", db: "prisma"}])';
+      mongosh --host mongo1 --port 27017 --quiet;
+      "
+    volumes:
+      - "mongo1_data:/data/db"
+      - "mongo1_config:/data/configdb"
+    depends_on:
+      mongo1:
+        condition: service_healthy
+
+  prisma-studio:
+    container_name: prisma-studio
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.prisma-studio.local
+    ports:
+      - 5555:5555
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo-init-replica
+
+  nextjs-app:
+    container_name: nextjs-app
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile.nextjs-app.local
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env
+    depends_on:
+      - mongo-init-replica
