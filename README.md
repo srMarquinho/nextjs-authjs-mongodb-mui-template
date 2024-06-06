@@ -25,7 +25,6 @@
 
       MAILER_PASSWORD="password"
     ```
-
 ### URLs
 
 App: `http://localhost:3000/`
@@ -40,3 +39,5 @@ Prisma studio: `http://localhost:5555/`
 - [Prisma](https://www.prisma.io/)
 - [MongoDB Atlas](https://www.mongodb.com/atlas/database)
 - [Vercel](https://vercel.com/)
+
+![Login Page](example.png)
