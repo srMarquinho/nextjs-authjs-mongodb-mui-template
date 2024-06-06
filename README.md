@@ -12,9 +12,19 @@
 
 - Run the deployment
 
-```sh
-$ docker compose -f docker-compose.local.yml up --build
-```
+    ```sh
+      $ docker compose -f docker-compose.local.yml up --build
+    ```
+
+- For mailer to work, define in you .env file:
+
+    Mailer is using `nodemailer` and setup for `gmail` (for now feel free to make the necessary changes if you need another provider)
+
+    ```
+      MAILER_USER="example@example.com"
+
+      MAILER_PASSWORD="password"
+    ```
 
 ### URLs
 
