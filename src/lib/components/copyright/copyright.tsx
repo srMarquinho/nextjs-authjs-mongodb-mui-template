@@ -5,7 +5,7 @@ export function Copyright({ sx }:{ sx?: SxProps<Theme> }) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" sx={sx}>
       {`©  ${new Date().getFullYear()} `}
-      <Link color="inherit" href="/">
+      <Link color="inherit" href="https://srmarquinho.github.io/CV/">
         {`${sharedMetadata.title}`}
       </Link>
       {' Todos os direitos reservados.'}
